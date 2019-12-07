@@ -1,6 +1,6 @@
 function auth(){
     // Change this to the ID of the client that you registered with the SMART on FHIR authorization server.
-    let clientId = "d2d12814-2e75-4818-8a95-9466015b8bd6";
+    let clientId = "dce23215-2524-4cab-b686-a3af962e5ad8";
 
     // For demonstration purposes, if you registered a confidential client
     // you can enter its secret here. The demo app will pretend it's a confidential

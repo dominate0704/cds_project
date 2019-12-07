@@ -1,17 +1,196 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Mental Health</title>
-    <script src="js/script.js"></script>
+    <title>CDS project</title>
+    <script type="text/javascript" src='js/script.js'> </script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    
 </head>
 
 <body onload="loadPatient()">
 
-<h1>Mental Health</h1>
-<div id="main"></div>
+
+<!-- Load our React component. -->
+<h1>cds project</h1>
+
+<div id = "name"></div>
+<br style="margin-bottom:240px;"/>
+<div id = "age"></div>
+<br style="margin-bottom:240px;"/>
+<div id = "weight"></div>
+<br style="margin-bottom:240px;"/>
+<div id = "root"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+
+
+<script type="text/babel">
+
+class TodoApp extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { items: [], text: '' };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  render() {
+    return (
+      <div>
+        <h3>Max Dosage</h3>
+        <form onSubmit={this.handleSubmit}>
+                <label>
+                    Medications:
+                    <select value={this.state.value} onChange={this.handleChange}>
+                        <option value="">Choose One Medications</option>
+                        <option value="Lidocaine without epinephrine 0.5%">Lidocaine without epinephrine 0.5%</option>
+                        <option value="Lidocaine without epinephrine 1%">Lidocaine without epinephrine 1%</option>
+                        <option value="Lidocaine without epinephrine 2%">Lidocaine without epinephrine 2%</option>
+                        <option value="Lidocaine with epinephrine 1:100,000 0.5%">Lidocaine with epinephrine 1:100,000 0.5%</option>
+                        <option value="Lidocaine with epinephrine 1:100,000 1%">Lidocaine with epinephrine 1:100,000 1%</option>
+                        <option value="Lidocaine with epinephrine 1:100,000 2%">Lidocaine with epinephrine 1:100,000 2%</option>
+                        <option value="Bupivacaine without epinephrine 0.25%">Bupivacaine without epinephrine 0.25%</option>
+                        <option value="Bupivacaine without epinephrine 0.5%">Bupivacaine without epinephrine 0.5%</option>
+                        <option value="Bupivicaine with epinephrine 1:200,000 0.25%">Bupivicaine with epinephrine 1:200,000 0.25%</option>
+                        <option value="Bupivicaine with epinephrine 1:200,000 0.5%">Bupivicaine with epinephrine 1:200,000 0.5%</option>   
+                    </select>
+                </label>
+          <button>
+            Submit #{this.state.items.length + 1}
+          </button>
+        </form>
+        <TodoList items={this.state.items} />
+      </div>
+    );
+  }
+
+  maxdose(text){
+    var max = 0;
+    switch(text){
+        case "Lidocaine without epinephrine 0.5%":
+            max = window.weight*4;
+            if(max >= 300){
+                max = 300
+            }
+            max = max/5;
+            break;
+        case "Lidocaine without epinephrine 1%":
+            max = window.weight*4;
+            if(max >= 300){
+                max = 300;
+            }
+            max = max/10;
+            break;
+        case "Lidocaine without epinephrine 2%":
+            max = window.weight*4;
+            if(max >= 300){
+                max = 300
+            }
+            max = max/20;
+            break;
+        case "Lidocaine with epinephrine 1:100,000 0.5%":
+            max = window.weight*7;
+            if(max >= 300){
+                max = 300;
+            }
+            max = max/5;
+            break;
+        case "Lidocaine with epinephrine 1:100,000 1%":
+            max = window.weight*7;
+            if(max >= 300){
+                max = 300;
+            }
+            max = max/10;
+            break;
+        case "Lidocaine with epinephrine 1:100,000 2%":
+            max = window.weight*7;
+            if(max >= 300){
+                max = 300;
+            }
+            max = max/20;
+            break;              
+        case "Bupivacaine without epinephrine 0.25%":
+            max = window.weight*2;
+            if(max >= 175){
+                max = 175;
+            }
+            max = max/2.5;
+            break;
+        case "Bupivacaine without epinephrine 0.5%":
+            max = window.weight*2;
+            if(max >= 175){
+                max = 175;
+            }
+            max = max/5;
+            break;
+        case "Bupivicaine with epinephrine 1:200,000 0.25%":
+            max = window.weight*3;
+            if(max >= 175){
+                max = 175;
+            }
+            max = max/2.5;
+            break; 
+        case "Bupivicaine with epinephrine 1:200,000 0.5%":
+            max = window.weight*3;
+            if(max >= 175){
+                max = 175;
+            }
+            max = max/5;
+            break; 
+    }
+    return max;
+  }
+
+  handleChange(e) {
+    this.setState({ text: e.target.value });
+  }
+
+  handleSubmit(e) {
+    e.preventDefault();
+    if (!this.state.text.length) {
+      return;
+    }
+    var a = this.maxdose(this.state.text);
+    const newItem = {
+      text: this.state.text,
+      max: a.toString(),
+      id: Date.now()
+    };
+    this.setState(state => ({
+      items: state.items.concat(newItem),
+      text: '',
+    }));
+  }
+}
+
+class TodoList extends React.Component {
+
+  render() {
+    console.log(this.props.items.length)
+    return (
+        <div>
+            <ul>
+                {this.props.items.map(item => (
+                <li key={item.id}>{item.text}: {item.max} ml</li>
+                ))}
+            </ul>
+      </div>
+    );
+  }
+}
+
+ReactDOM.render(
+  <TodoApp />,
+  document.getElementById('root')
+);
+</script>
 
 </body>
 </html>
