@@ -1,12 +1,12 @@
 {
-  "name": "mental-health-app",
+  "name": "CDS_Project",
   "version": "1.0.0",
-  "description": "skeleton architecture for the mental health FHIR app",
+  "description": "skeleton architecture for the cds",
   "main": "index.js",
   "scripts": {
     "start-server": "nodemon ./index.js localhost 4040"
   },
-  "author": "mwatkin8",
+  "author": "Yucheng Yang",
   "license": "Apache-2.0",
   "dependencies": {
     "body-parser": "^1.18.3",
