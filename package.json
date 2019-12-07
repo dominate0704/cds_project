@@ -1,5 +1,5 @@
 {
-  "name": "CDS_Project",
+  "name": "cds_project",
   "version": "1.0.0",
   "description": "skeleton architecture for the cds",
   "main": "index.js",
