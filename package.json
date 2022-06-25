@@ -11,7 +11,7 @@
   "dependencies": {
     "body-parser": "^1.18.3",
     "express": "^4.16.3",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.7",
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-scripts": "3.2.0",
